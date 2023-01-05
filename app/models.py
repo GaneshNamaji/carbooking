@@ -33,4 +33,11 @@ class Product(models.Model):
     product_images=models.ImageField(upload_to='product')
     def __str__(self):
         return self.title
+
+
+        gnesh
+
+
+
+    
     
