@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block cat %}
+<div class="container">
+    
+    <div class="row justify-content-center">
+        {% for prod in product %}
+        <div class="col-7 mt-4 p-1 border border-secondary">
+            <div class="row justify-content-between">
+                <div class="col-lg-2">
+                    <img src="{{prod.product_images.url}}" alt="" width="130px" height="110px">
+                </div>
+                <div class="col-lg-5 ">
+                    <p class="text-start mb-1">{{prod.title}}</p>
+                    <p class="text-start mb-1">{{prod.composition}}</p>
+                    <p class="text-start mb-1">Rs.{{prod.selling_prize}}</p>
+                </div>
+                <div class="col-lg-2">
+                    <a href="{% url 'productdetails' prod.id %}"><button class="btn btn-primary mt-4">viewdetails</button></a>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    <br><br>
+</div>
+{% endblock %}
