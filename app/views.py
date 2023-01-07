@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from app.models import Contact,Product
+from app.models import Contact,Product,Customer
 from django.views import View
 
 
@@ -91,3 +91,48 @@ class productdetails(View):
     def get(self,request,pk):
         product=Product.objects.get(pk=pk)
         return render(request,"productdetails.html",locals())
+
+def profile(request):
+    if request.method =="POST":
+        user=request.user
+        fname=request.POST.get("fname")
+        name=request.POST.get("name")
+        lname=request.POST.get("lname")
+        location=request.POST.get("location")
+        email=request.POST.get("email")
+        phone=request.POST.get("phoneno")
+        state=request.POST.get("state")
+
+        query=Customer(user=user,name=name,fname=fname,lname=lname,location=location,email=email,phoneno=phone,state=state)
+        query.save()
+        messages.info(request,"saved sucessfully")
+        return redirect("address")
+
+    return render(request,"profile.html")
+
+def address(request):
+    add=Customer.objects.filter(user=request.user)
+    return render(request,"address.html",locals())
+
+def updateaddress(request,pk):
+    add=Customer.objects.get(pk=pk)
+    if request.method == "POST":
+        user=request.user
+        add.fname=request.POST.get("fname")
+        add.name=request.POST.get("name")
+        add.lname=request.POST.get("lname")
+        add.location=request.POST.get("location")
+        add.email=request.POST.get("email")
+        add.phone=request.POST.get("phoneno")
+        add.state=request.POST.get("state")
+        add.save()
+        messages.info(request,"data saved")
+        return redirect("address")
+    
+    
+    return render(request,"updateaddress.html",locals())
+
+def deleteaddress(request,pk):
+    Customer.objects.filter(id=pk).delete()
+    messages.info(request,"deleted successfully")
+    return redirect("address")

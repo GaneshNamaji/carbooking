@@ -64,7 +64,7 @@
               {{request.user}}
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">PROFILE</a></li>
+              <li><a class="dropdown-item" href="{% url 'profile' %}">PROFILE</a></li>
               <li><a class="dropdown-item" href="#">ORDERS</a></li>
               <li><a class="dropdown-item" href="#">CHANGE PASSWORD</a></li>
               <li><a class="dropdown-item" href="{% url 'logout'%}">LOGOUT</a></li>
@@ -126,7 +126,11 @@
 
   {% block brands %}{% endblock %}
   {% block cat %}{% endblock %}
+  {% block profile %}{% endblock %}
   {% block proddetails %}{% endblock %}
+  {% block updateaddress %}{% endblock %}
+  {% block address %}
+  {% endblock %}
 
   {% block footer %}{% endblock %}
 
