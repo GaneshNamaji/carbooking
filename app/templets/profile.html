@@ -7,7 +7,7 @@
         <a class="nav-link active ms-0" href="{% url 'profile' %}" target="__blank">Profile</a>
         <a class="nav-link active ms-0" href="{% url 'address' %}" target="__blank">Address</a>
     </nav>
-    <hr class="mt-0 mb-4"> required
+    <hr class="mt-0 mb-4">
     <div class="row ">
         <div class="col-xl-8">
             <!-- Account details card-->
@@ -20,7 +20,7 @@
                             <label class="small mb-1" for="inputUsername">Name (how your name will appear to other
                                 users on the site)</label>
                             <input class="form-control border border-dark" id="inputUsername" type="text"
-                                name="name" placeholder="Enter your name" required>
+                                name="name" placeholder="Enter your name" value={{request.user}} required>
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">

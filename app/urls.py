@@ -12,6 +12,14 @@ urlpatterns = [
     path('contact',views.contact,name="contact"),
     path('profile',views.profile,name="profile"),
     path('address',views.address,name="address"),
+    path('cart/',views.show_cart,name="showcart"),
+    path('invoice/<int:pk>',views.invoice,name="invoice"),
+    path('orders',views.orders,name="orders"),
+    path('add-to-cart/',views.add_to_cart,name="add-to-cart"),
+    path('deletecartitem/<int:pk>',views.deletecartitem,name="deletecartitem"),
+    path('checkout',views.checkout.as_view(),name="checkout"),
+
+    
     path('deleteaddress/<int:pk>',views.deleteaddress,name="deleteaddress"),
     path('updateaddress/<int:pk>',views.updateaddress,name="updateaddress"),
     path('category/<slug:val>',views.category.as_view(),name="category"),

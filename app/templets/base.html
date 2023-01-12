@@ -65,16 +65,12 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{% url 'profile' %}">PROFILE</a></li>
-              <li><a class="dropdown-item" href="#">ORDERS</a></li>
-              <li><a class="dropdown-item" href="#">CHANGE PASSWORD</a></li>
+              <li><a class="dropdown-item" href="{% url 'orders' %}">ORDERS</a></li>
               <li><a class="dropdown-item" href="{% url 'logout'%}">LOGOUT</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">CART</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">WISHLIST</a>
+            <a class="nav-link" href="{% url 'showcart' %}">CART</a>
           </li>
 
           {% else %}
@@ -99,7 +95,7 @@
   </nav>
   {% if request.user.is_authenticated %}
   {% for message in messages %}
-  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show text-center" role="alert">
     <strong></strong> {{message}}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
@@ -127,7 +123,11 @@
   {% block brands %}{% endblock %}
   {% block cat %}{% endblock %}
   {% block profile %}{% endblock %}
+  {% block invoice %}{% endblock %}
+  {% block addtocart %}{% endblock %}
+  {% block orders %}{% endblock %}
   {% block proddetails %}{% endblock %}
+  {% block checkout %}{% endblock %}
   {% block updateaddress %}{% endblock %}
   {% block address %}
   {% endblock %}
